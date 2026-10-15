@@ -36,21 +36,15 @@ print("drone bridge ready.")
 print("Type 'exit' to quit.")
 
 def send_messages():
-    try:
-        while True:
-            command = input("> ").strip()
-
-            if command.lower() == "exit":
-                break
-
-            if command:
-                radio.write((command + "\n").encode())
-                radio.flush()
-                print(f"Sent: {command}")
-
-    except KeyboardInterrupt:
-        radio.close()
-        sys.exit()
+    while True:
+        command = input("> ").strip()
+        
+        if command.lower() == "exit":
+            break
+        if command:
+            radio.write((command + "\n").encode())
+            radio.flush()
+            print(f"Sent: {command}")
         
 recv = threading.Thread(
     target=receive_messages,
