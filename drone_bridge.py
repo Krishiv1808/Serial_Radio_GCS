@@ -56,8 +56,6 @@ recv = threading.Thread(
     target=receive_messages,
     daemon=True
 )
-thread.start()
-
 send = threading.Thread(
     target=send_messages,
     daemon=True
